@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
@@ -34,4 +35,6 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default connect((state) => ({
+    store: state.store,
+}))(Header);

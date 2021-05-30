@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import AnswerQuestion from './AnswerQuestion';
@@ -36,4 +37,6 @@ class Questions extends Component {
     }
 }
 
-export default Questions;
+export default connect((state) => ({
+    store: state.store,
+}))(Questions);

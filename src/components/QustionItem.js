@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class QustionItem extends Component {
     render() {
@@ -13,4 +14,6 @@ class QustionItem extends Component {
     }
 }
 
-export default QustionItem;
+export default connect((state) => ({
+    store: state.store,
+}))(QustionItem);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class AddQuestions extends Component {
     render() {
@@ -23,4 +24,6 @@ class AddQuestions extends Component {
     }
 }
 
-export default AddQuestions;
+export default connect((state) => ({
+    store: state.store,
+}))(AddQuestions);

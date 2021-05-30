@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Leaderboard extends Component {
     render() {
@@ -48,4 +49,6 @@ class Leaderboard extends Component {
     }
 }
 
-export default Leaderboard;
+export default connect((state) => ({
+    store: state.store,
+}))(Leaderboard);
