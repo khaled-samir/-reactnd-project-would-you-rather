@@ -19,7 +19,7 @@ class Questions extends Component {
                     </TabList>
 
                     <TabPanel>
-                        <ul class="list-group">
+                        <ul className="list-group">
                             <QustionItem />
                             <QustionItem />
                             <QustionItem />

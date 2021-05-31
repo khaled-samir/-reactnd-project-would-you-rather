@@ -1,25 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-
+import { applyMiddleware, createStore } from 'redux'
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+
 import './index.css';
 import App from './components/App';
+import combineReducers from './reducers';
+import thunk from 'redux-thunk';
 
-import { createStore } from 'redux'
-import { Provider } from 'react-redux';
-function counterReducer(state = { value: 0 }, action) {
-  switch (action.type) {
-    case 'counter/incremented':
-      return { value: state.value + 1 }
-    case 'counter/decremented':
-      return { value: state.value - 1 }
-    default:
-      return state
-  }
-}
-const store = createStore(counterReducer);
-store.subscribe(() => console.log(store.getState()))
+const store = createStore(combineReducers, applyMiddleware(thunk));
 
 
 ReactDOM.render(

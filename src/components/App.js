@@ -9,20 +9,31 @@ import Header from './Header';
 import Leaderboard from './Leaderboard';
 import Login from './Login';
 import Questions from './Questions';
-
+// import { handelInitialData } from '../reducers/users';
 class App extends Component {
-  render() {
 
-    console.log(this.props)
+  componentDidMount() {
+    const { store, state, dispatch } = this.props;
+    //   console.log("state")
+    //   console.log(state)
+    //   dispatch(handelInitialData())
+  }
+
+
+  render() {
+    // const { store, state, dispatch } = this.props;
+    // store.subscribe(() => console.log(store.getState()))
+    // console.log("state")
+    // console.log(state)
+
     return (
       <div className="container text-center">
         <Header />
-
         <div className="row">
           <Switch>
             <Route exact path="/">
               <Login />
-              <Questions />
+              {/* <Questions /> */}
             </Route>
             <Route path="/add">
               <AddQuestions />
@@ -40,5 +51,7 @@ class App extends Component {
 
 
 export default connect((state) => ({
+  state: state,
   store: state.store,
+  dispatch: state.dispatch,
 }))(App);
