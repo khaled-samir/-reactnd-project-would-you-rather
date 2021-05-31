@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
-import { handelInitialData } from '../actions/usersActions';
+
 
 class Login extends Component {
     componentDidMount() {
-        const { store, state, dispatch } = this.props;
-        console.log("state")
-        console.log(state)
-        dispatch(handelInitialData())
+
     }
 
     render() {

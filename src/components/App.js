@@ -11,14 +11,20 @@ import Login from './Login';
 import Questions from './Questions';
 import PrivateRoute from '../routes/PrivateRoute';
 import AnswerQuestion from './AnswerQuestion';
+import { handelInitialDataQuestions } from '../actions/questionsActions';
+import { handelInitialData } from '../actions/usersActions';
 // import { handelInitialData } from '../reducers/users';
 class App extends Component {
 
   componentDidMount() {
-
-    //   console.log("state")
-    //   console.log(state)
+    // debugger
+    const { dispatch } = this.props;
+    // // dispatch()
+    // console.log("questions")
+    // console.log(questions)
     //   dispatch(handelInitialData())
+    dispatch(handelInitialData())
+    dispatch(handelInitialDataQuestions())
   }
 
 
@@ -27,8 +33,8 @@ class App extends Component {
     // store.subscribe(() => console.log(store.getState()))
     // console.log("state")
     // console.log(state)
-    const { state, dispatch } = this.props;
-    const authedUser = state.authedUser
+    const { state, dispatch, authedUser } = this.props;
+    // const authedUser = state.authedUser
     return (
       <div className="container text-center">
         <Header />
@@ -44,7 +50,7 @@ class App extends Component {
             <PrivateRoute path="/add" component={AddQuestions} />
             <PrivateRoute path="/leaderboard" component={Leaderboard} />
             <PrivateRoute path="/question" component={AnswerQuestion} />
-            <PrivateRoute path="/question/:id" component={AnswerQuestion} />
+            <PrivateRoute path="{/question/:id}" component={AnswerQuestion} />
 
             {/* 
             <Route path="/leaderboard">
@@ -61,7 +67,6 @@ class App extends Component {
 
 
 export default connect((state) => ({
-  state: state,
-  store: state.store,
   dispatch: state.dispatch,
+  authedUser: state.authedUser,
 }))(App);

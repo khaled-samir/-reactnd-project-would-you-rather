@@ -2,7 +2,6 @@ import { SET_AUTHED_USER } from "../actions/authedUser"
 
 
 export function authedUser(state = "", action) {
-    console.log(state)
     switch (action.type) {
         case SET_AUTHED_USER: {
             return action.user

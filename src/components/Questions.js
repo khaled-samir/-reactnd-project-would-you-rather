@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import AnswerQuestion from './AnswerQuestion';
+// import AnswerQuestion from './AnswerQuestion';
 import QustionItem from './QustionItem';
 
 class Questions extends Component {
     render() {
+        const { questions, authedUser, users } = this.props
         return (
 
             <div className="col-xs-12 block-center">
-                <AnswerQuestion />
+                {/* <AnswerQuestion /> */}
 
                 <Tabs>
                     <TabList>
@@ -20,13 +21,43 @@ class Questions extends Component {
 
                     <TabPanel>
                         <ul className="list-group">
-                            <QustionItem />
-                            <QustionItem />
-                            <QustionItem />
+                            {Object.entries(questions).map(([questionKey, question]) => {
+                                let isNotAnswered = true;
+                                // console.log(questionKey)
+                                Object.entries(users[authedUser].answers).map(([answersID, answers]) => {
+                                    console.log("answersID", answersID)
+
+                                    if (answersID === questionKey) {
+                                        isNotAnswered = false
+                                    }
+
+                                })
+
+                                if (isNotAnswered) {
+                                    return <QustionItem key={question.id} question={question} />
+                                }
+                            })}
+
                         </ul>
                     </TabPanel>
                     <TabPanel>
-                        <h3>Answered questions</h3>
+                        {Object.entries(questions).map(([questionKey, question]) => {
+                            let isAnswered = false;
+                            // console.log(questionKey)
+                            Object.entries(users[authedUser].answers).map(([answersID, answers]) => {
+                                console.log("answersID", answersID)
+
+                                if (answersID === questionKey) {
+                                    isAnswered = true
+                                }
+
+                            })
+
+                            if (isAnswered) {
+                                return <QustionItem key={question.id} question={question} />
+                            }
+                        })}
+
                     </TabPanel>
                 </Tabs>
 
@@ -38,5 +69,7 @@ class Questions extends Component {
 }
 
 export default connect((state) => ({
-    store: state.store,
+    authedUser: state.authedUser,
+    questions: state.questions,
+    users: state.users,
 }))(Questions);
