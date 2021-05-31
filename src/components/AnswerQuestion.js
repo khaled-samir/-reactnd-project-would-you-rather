@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class AnswerQuestion extends Component {
     render() {
+        console.log(this.props);
         return (
             <div className="answer-questions">
 

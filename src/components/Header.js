@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setAuthedUser } from '../actions/authedUser';
 
 class Header extends Component {
     render() {
+
+        const { state, dispatch } = this.props
+        // const state = state.getState()
+        const authedUser = state.authedUser
+        const authedUserFullData = state.users[authedUser]
+        // debugger
         return (
 
             <header className="App-header">
@@ -20,21 +27,42 @@ class Header extends Component {
                                 {/* <li><Link to="/questions">Questions</Link></li> */}
                                 <li><Link to="/add">Add new poll</Link></li>
                                 <li><Link to="/leaderboard">Leader board</Link></li>
+                                <li><Link to="/question">question</Link></li>
+                                <li><Link to="/question/20">question id</Link></li>
                             </ul>
 
-                            <ul className="nav navbar-nav navbar-right">
-                                <li><a href="#"><img src="https://via.placeholder.com/20x20" alt="..." className="img-circle" /> UserName</a></li>
-                                <li><a href="#">Log out</a></li>
-                            </ul>
+                            {authedUser ?
 
+                                <ul className="nav navbar-nav navbar-right" style={{ 'display': authedUser ? '' : 'none' }}>
+                                    <li>
+                                        <img
+                                            src={authedUserFullData.avatar ? authedUserFullData.avatar : "https://via.placeholder.com/20x20"}
+                                            alt=""
+                                            className="img-circle"
+                                            width="20"
+                                            height="20" />
+                                        {authedUserFullData.name || ""}
+                                    </li>
+
+                                    <li>
+                                        <button onClick={(e) => {
+                                            e.preventDefault()
+                                            dispatch(setAuthedUser(""))
+                                        }}>
+                                            Log out
+                                        </button>
+                                    </li>
+                                </ul>
+
+                                : ''}
                         </div>
                     </div>
                 </nav>
-            </header>
+            </header >
         );
     }
 }
 
 export default connect((state) => ({
-    store: state.store,
+    state: state,
 }))(Header);

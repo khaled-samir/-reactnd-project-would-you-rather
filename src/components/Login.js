@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser';
 import { handelInitialData } from '../actions/usersActions';
 
 class Login extends Component {
@@ -25,7 +26,9 @@ class Login extends Component {
                 <div className="input-group width-100">
                     <form onSubmit={(e) => {
                         e.preventDefault()
-                        alert(e.target[0].value)
+                        const user = e.target[0].value
+                        // alert(user)
+                        dispatch(setAuthedUser(user))
                     }}>
 
                         <select className="form-control" id="login">

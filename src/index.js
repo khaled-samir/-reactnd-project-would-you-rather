@@ -4,13 +4,14 @@ import reportWebVitals from './reportWebVitals';
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import './index.css';
 import App from './components/App';
 import combineReducers from './reducers';
 import thunk from 'redux-thunk';
 
-const store = createStore(combineReducers, applyMiddleware(thunk));
+const store = createStore(combineReducers, composeWithDevTools(applyMiddleware(thunk)));
 
 
 ReactDOM.render(
