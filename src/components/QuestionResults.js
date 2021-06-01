@@ -11,12 +11,12 @@ function QuestionResults(props) {
     const theQuestion = question || questions[props.match.params.id]
 
     // }
-    const theAuthor = users[question.author]
+    const theAuthor = users[theQuestion.author]
     const theAuthedUser = users[authedUser]
 
     const theAuthedUserAnswer = theAuthedUser.answers[theQuestion.id]
 
-    if (question === undefined || theAuthedUserAnswer === undefined) {
+    if (theQuestion === undefined || theAuthedUserAnswer === undefined) {
         return "";
     }
 
