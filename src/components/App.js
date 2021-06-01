@@ -14,6 +14,7 @@ import AnswerQuestion from './AnswerQuestion';
 import { handelInitialDataQuestions } from '../actions/questionsActions';
 import { handelInitialUsersData } from '../actions/usersActions';
 import QuestionResults from './QuestionResults';
+// import { setAuthedUser } from '../actions/authedUser';
 // import { handelInitialData } from '../reducers/users';
 class App extends Component {
 
@@ -21,6 +22,27 @@ class App extends Component {
 
     const { dispatch } = this.props;
     // // dispatch()
+    // function getCookie(cname) {
+    //   var name = cname + "=";
+    //   var decodedCookie = decodeURIComponent(document.cookie);
+    //   var ca = decodedCookie.split(';');
+    //   for (var i = 0; i < ca.length; i++) {
+    //     var c = ca[i];
+    //     while (c.charAt(0) == ' ') {
+    //       c = c.substring(1);
+    //     }
+    //     if (c.indexOf(name) == 0) {
+    //       return c.substring(name.length, c.length);
+    //     }
+    //   }
+    //   return "";
+    // }
+    // var cookiesUsername = getCookie("username");
+    // // debugger
+    // if (cookiesUsername !== "") {
+    //   dispatch(setAuthedUser(cookiesUsername))
+    // }
+
     // console.log("questions")
     // console.log(questions)
     //   dispatch(handelInitialData())

@@ -6,11 +6,13 @@ import { setAuthedUser } from '../actions/authedUser';
 class Header extends Component {
     render() {
 
-        const { state, dispatch } = this.props
+        const { dispatch, authedUser, users } = this.props
         // const state = state.getState()
-        const authedUser = state.authedUser
-        const authedUserFullData = state.users[authedUser]
-
+        // const authedUser = state.authedUser
+        const authedUserFullData = users[authedUser]
+        // if (authedUserFullData === undefined) {
+        //     return"";
+        // }
         return (
 
             <header className="App-header">
@@ -67,4 +69,6 @@ class Header extends Component {
 
 export default connect((state) => ({
     state: state,
+    authedUser: state.authedUser,
+    users: state.users,
 }))(Header);
