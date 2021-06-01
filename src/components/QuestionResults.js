@@ -20,14 +20,14 @@ function QuestionResults(props) {
         return "";
     }
 
-    console.log(props)
-    // history.push('/')
-    console.log(questions)
-    console.log(users)
-    console.log('authedUser', authedUser)
-    console.log('theAuthedUser', theAuthedUser)
-    console.log('theQuestion', theQuestion)
-    console.log('theAuthor', theAuthor)
+    // console.log(props)
+    // // history.push('/')
+    // console.log(questions)
+    // console.log(users)
+    // console.log('authedUser', authedUser)
+    // console.log('theAuthedUser', theAuthedUser)
+    // console.log('theQuestion', theQuestion)
+    // console.log('theAuthor', theAuthor)
     return (
         <div className="col-xs-offset-3 col-xs-6 text-center answer-questions">
             <h4>Results:</h4>
