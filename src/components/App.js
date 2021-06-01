@@ -13,6 +13,7 @@ import PrivateRoute from '../routes/PrivateRoute';
 import AnswerQuestion from './AnswerQuestion';
 import { handelInitialDataQuestions } from '../actions/questionsActions';
 import { handelInitialUsersData } from '../actions/usersActions';
+import QuestionResults from './QuestionResults';
 // import { handelInitialData } from '../reducers/users';
 class App extends Component {
 
@@ -50,8 +51,8 @@ class App extends Component {
 
           <PrivateRoute path="/add" component={AddQuestions} />
           <PrivateRoute path="/leaderboard" component={Leaderboard} />
-          <PrivateRoute path="/question" component={AnswerQuestion} />
-          <PrivateRoute path="/question/:id" component={AnswerQuestion} />
+          <PrivateRoute path="/resultsQuestions/:id" component={QuestionResults} />
+          <PrivateRoute path="/questions/:id" component={AnswerQuestion} />
 
           {/* 
             <Route path="/leaderboard">

@@ -8,9 +8,6 @@ import { useHistory } from 'react-router-dom';
 
 function AnswerQuestion(props) {
     let history = useHistory();
-    function pushTo() {
-        history.push('/')
-    }
 
     const { questions, users, authedUser, dispatch } = props
     // console.log(props.match.params);
@@ -38,13 +35,13 @@ function AnswerQuestion(props) {
                 <button className="btn btn-primary" onClick={() => {
                     const answerObject2 = { "authedUser": authedUser, "qid": qustionId, "answer": "optionOne" }
                     dispatch(handelSaveQuestionAnswer(answerObject2))
-                    pushTo()
+                    history.push('/resultsQuestions/' + qustionId)
                 }}>{qustion.optionOne.text}</button>
                 <h4>or</h4>
                 <button className="btn btn-primary" onClick={() => {
                     const answerObject2 = { "authedUser": authedUser, "qid": qustionId, "answer": "optionTwo" }
                     dispatch(handelSaveQuestionAnswer(answerObject2))
-                    pushTo()
+                    history.push('/resultsQuestions/' + qustionId)
                 }}>{qustion.optionTwo.text}</button>
 
             </div>
