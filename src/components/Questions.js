@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import QuestionResults from './QuestionResults';
 // import AnswerQuestion from './AnswerQuestion';
 import QustionItem from './QustionItem';
 
@@ -54,7 +55,7 @@ class Questions extends Component {
                             })
 
                             if (isAnswered) {
-                                return <QustionItem key={question.id} question={question} />
+                                return <QuestionResults key={question.id} question={question} />
                             }
                         })}
 
