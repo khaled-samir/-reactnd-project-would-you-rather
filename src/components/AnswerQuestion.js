@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 class AnswerQuestion extends Component {
     render() {
-        console.log(this.props);
+
+        const { questions, users, authedUser } = this.props
+        // debugger
+        console.log(this.props.match.params);
+        console.log(questions);
+        console.log(users);
+        console.log(authedUser);
         return (
             <div className="answer-questions">
 
@@ -19,6 +26,17 @@ class AnswerQuestion extends Component {
     }
 }
 
-export default connect((state) => ({
-    store: state.store,
-}))(AnswerQuestion);
+// authedUser: state.authedUser
+// authedUser: state.authedUser,
+// questions: state.questions,
+// users: state.users,
+function mapStateToProps({ authedUser, questions, users }) {
+    // const question = questions[id]
+    return {
+        questions,
+        users,
+        authedUser
+    }
+}
+
+export default connect(mapStateToProps)(AnswerQuestion);
