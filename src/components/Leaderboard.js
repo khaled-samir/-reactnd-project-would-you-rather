@@ -7,13 +7,21 @@ class Leaderboard extends Component {
 
         return (
             <div>
-                {Object.entries(users).map(([usersKey, usersValue]) => {
+                {Object.entries(users).sort((a, b) => {
+                    // console.log(a[1])
+                    // console.log(b[1])
+                    const answeredQuestionsB = Object.keys(b[1].answers).length
+                    const createdQuestionsB = b[1].questions.length
+                    const scoreB = answeredQuestionsB + createdQuestionsB
+                    const answeredQuestionsA = Object.keys(a[1].answers).length
+                    const createdQuestionsA = a[1].questions.length
+                    const scoreA = answeredQuestionsA + createdQuestionsA
+                    return scoreB - scoreA
+                }).map(([usersKey, usersValue]) => {
 
                     const answeredQuestions = Object.keys(usersValue.answers).length
                     const createdQuestions = usersValue.questions.length
-
-
-
+                    const score = answeredQuestions + createdQuestions
 
                     return <div key={usersValue.id} className="col-sm-6 col-md-4">
                         <div className="thumbnail">
@@ -22,38 +30,12 @@ class Leaderboard extends Component {
                                 <h4>{usersValue.name}</h4>
                                 <p>Answered questions: {answeredQuestions}</p>
                                 <p>Created questions: {createdQuestions}</p>
-                                <p>Score: {answeredQuestions + createdQuestions}</p>
+                                <p>Score: {score}</p>
                             </div>
                         </div>
                     </div>
                 })}
 
-
-                {/* <div className="col-sm-6 col-md-4">
-                    <div className="thumbnail">
-                        <img src="https://via.placeholder.com/200x200" alt="..." />
-                        <div className="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>and save to reload.</p>
-                            <p>
-                                <a href="#" className="btn btn-primary" role="button">Button</a>
-                                <a href="#" className="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4">
-                    <div className="thumbnail">
-                        <img src="https://via.placeholder.com/200x200" alt="..." />
-                        <div className="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>and save to reload.</p>
-                            <p>
-                                <a href="#" className="btn btn-primary" role="button">Button</a>
-                                <a href="#" className="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         );
     }
