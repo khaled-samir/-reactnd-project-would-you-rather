@@ -22,7 +22,11 @@ class Questions extends Component {
 
                     <TabPanel>
                         <ul className="list-group">
-                            {Object.entries(questions).map(([questionKey, question]) => {
+                            {Object.entries(questions).sort((a, b) => {
+                                const scoreB = b[1].timestamp
+                                const scoreA = a[1].timestamp
+                                return scoreB - scoreA
+                            }).map(([questionKey, question]) => {
                                 let isNotAnswered = true;
                                 // console.log(questionKey)
                                 Object.entries(users[authedUser].answers).map(([answersID, answers]) => {
@@ -42,7 +46,12 @@ class Questions extends Component {
                         </ul>
                     </TabPanel>
                     <TabPanel>
-                        {Object.entries(questions).map(([questionKey, question]) => {
+                        {Object.entries(questions).sort((a, b) => {
+                            const scoreB = b[1].timestamp
+                            const scoreA = a[1].timestamp
+
+                            return scoreB - scoreA
+                        }).map(([questionKey, question]) => {
                             let isAnswered = false;
                             // console.log(questionKey)
                             Object.entries(users[authedUser].answers).map(([answersID, answers]) => {
