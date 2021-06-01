@@ -11,8 +11,7 @@ import App from './components/App';
 import combineReducers from './reducers';
 import thunk from 'redux-thunk';
 
-const store = createStore(combineReducers, composeWithDevTools(applyMiddleware(thunk)));
-
+export const store = createStore(combineReducers, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>

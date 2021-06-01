@@ -25,7 +25,7 @@ class Questions extends Component {
                                 let isNotAnswered = true;
                                 // console.log(questionKey)
                                 Object.entries(users[authedUser].answers).map(([answersID, answers]) => {
-                                    console.log("answersID", answersID)
+                                    // console.log("answersID", answersID)
 
                                     if (answersID === questionKey) {
                                         isNotAnswered = false
@@ -45,7 +45,7 @@ class Questions extends Component {
                             let isAnswered = false;
                             // console.log(questionKey)
                             Object.entries(users[authedUser].answers).map(([answersID, answers]) => {
-                                console.log("answersID", answersID)
+                                // console.log("answersID", answersID)
 
                                 if (answersID === questionKey) {
                                     isAnswered = true

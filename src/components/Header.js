@@ -10,7 +10,7 @@ class Header extends Component {
         // const state = state.getState()
         const authedUser = state.authedUser
         const authedUserFullData = state.users[authedUser]
-        // debugger
+
         return (
 
             <header className="App-header">
@@ -25,10 +25,12 @@ class Header extends Component {
                             <ul className="nav navbar-nav">
                                 {/* <li className="active"><a href="#">Link <span className="sr-only">(current)</span></a></li> */}
                                 {/* <li><Link to="/questions">Questions</Link></li> */}
+                                <li> <Link to="/">Home</Link></li>
+
                                 <li><Link to="/add">Add new poll</Link></li>
                                 <li><Link to="/leaderboard">Leader board</Link></li>
-                                <li><Link to="/question">question</Link></li>
-                                <li><Link to="/question/20">question id</Link></li>
+                                {/* <li><Link to="/question">question</Link></li>
+                                <li><Link to="/question/20">question id</Link></li> */}
                             </ul>
 
                             {authedUser ?
@@ -36,11 +38,11 @@ class Header extends Component {
                                 <ul className="nav navbar-nav navbar-right" style={{ 'display': authedUser ? '' : 'none' }}>
                                     <li>
                                         <img
-                                            src={authedUserFullData.avatar ? authedUserFullData.avatar : "https://via.placeholder.com/20x20"}
+                                            src={authedUserFullData.avatarURL ? authedUserFullData.avatarURL : "https://via.placeholder.com/20x20"}
                                             alt=""
-                                            className="img-circle"
-                                            width="20"
-                                            height="20" />
+                                            className="img-thumbnail img-circle"
+                                            width="50"
+                                            height="50" />
                                         {authedUserFullData.name || ""}
                                     </li>
 

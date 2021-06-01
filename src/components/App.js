@@ -12,18 +12,18 @@ import Questions from './Questions';
 import PrivateRoute from '../routes/PrivateRoute';
 import AnswerQuestion from './AnswerQuestion';
 import { handelInitialDataQuestions } from '../actions/questionsActions';
-import { handelInitialData } from '../actions/usersActions';
+import { handelInitialUsersData } from '../actions/usersActions';
 // import { handelInitialData } from '../reducers/users';
 class App extends Component {
 
   componentDidMount() {
-    // debugger
+
     const { dispatch } = this.props;
     // // dispatch()
     // console.log("questions")
     // console.log(questions)
     //   dispatch(handelInitialData())
-    dispatch(handelInitialData())
+    dispatch(handelInitialUsersData())
     dispatch(handelInitialDataQuestions())
   }
 
@@ -37,7 +37,9 @@ class App extends Component {
     // const authedUser = state.authedUser
     return (
       <div className="container text-center">
-        <Header />
+        {authedUser ? <Header /> : ''}
+
+
         <div className="row">
           <Route exact path="/">
             {authedUser ? <Questions /> : <Login />}
