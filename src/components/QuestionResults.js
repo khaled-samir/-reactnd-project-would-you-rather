@@ -21,7 +21,6 @@ function QuestionResults(props) {
     console.log('theAuthedUser', theAuthedUser)
     console.log('qustion', qustion)
     console.log('theAuthor', theAuthor)
-    debugger
     return (
         <div className="col-xs-offset-3 col-xs-6 text-center answer-questions">
             <h4>Results:</h4>
