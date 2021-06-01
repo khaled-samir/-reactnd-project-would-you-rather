@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import logo from './logo.svg';
 // import './App.css';
@@ -14,6 +14,7 @@ import AnswerQuestion from './AnswerQuestion';
 import { handelInitialDataQuestions } from '../actions/questionsActions';
 import { handelInitialUsersData } from '../actions/usersActions';
 import QuestionResults from './QuestionResults';
+import GenericNotFound from './GenericNotFound';
 // import { setAuthedUser } from '../actions/authedUser';
 // import { handelInitialData } from '../reducers/users';
 class App extends Component {
@@ -64,18 +65,24 @@ class App extends Component {
 
 
         <div className="row">
-          <Route exact path="/">
-            {authedUser ? <Questions /> : <Login />}
-          </Route>
-          {/* <Route path="/add">
+          <Switch>
+            <Route exact path="/">
+              {authedUser ? <Questions /> : <Login />}
+            </Route>
+            {/* <Route path="/add">
               <AddQuestions />
             </Route> */}
 
-          <PrivateRoute path="/add" component={AddQuestions} />
-          <PrivateRoute path="/leaderboard" component={Leaderboard} />
-          <PrivateRoute path="/resultsQuestions/:id" component={QuestionResults} />
-          <PrivateRoute path="/questions/:id" component={AnswerQuestion} />
-
+            <PrivateRoute path="/add" component={AddQuestions} />
+            <PrivateRoute path="/leaderboard" component={Leaderboard} />
+            <PrivateRoute path="/resultsQuestions/:id" component={QuestionResults} />
+            <PrivateRoute path="/questions/:id" component={AnswerQuestion} />
+            {/* <Redirect from='*' to='/404' /> */}
+            {/* <Route component={GenericNotFound} /> */}
+            <Route path="/404" component={GenericNotFound} />
+            <Redirect to="/404" />
+          </Switch>
+          {/* <Route exact path="*" component={GenericNotFound} /> */}
           {/* 
             <Route path="/leaderboard">
               <Leaderboard />
