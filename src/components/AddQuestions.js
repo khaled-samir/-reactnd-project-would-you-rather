@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { handelAddNewQuestion } from '../actions/questionsActions';
 
-class AddQuestions extends Component {
-
-    handelAddNewQuestionOnSubmit = (e, author) => {
+function AddQuestions(props) {
+    let history = useHistory();
+    function handelAddNewQuestionOnSubmit(e, author) {
         e.preventDefault();
         let optionOneElement = e.currentTarget.elements.optionOne,
             optionTwoElement = e.currentTarget.elements.optionTwo;
@@ -14,32 +15,33 @@ class AddQuestions extends Component {
             return;
         }
 
-        this.props.dispatch(handelAddNewQuestion({ optionOneText, optionTwoText, author }))
-        console.log(optionOneText, optionTwoText, author)
+        props.dispatch(handelAddNewQuestion({ optionOneText, optionTwoText, author }))
+        history.push('/')
+        // console.log(optionOneText, optionTwoText, author)
     }
-    render() {
-        const authedUser = this.props.authedUser;
-        return (
-            <div className="col-xs-offset-4 col-xs-4 add-questions">
 
-                <h3>Add question</h3>
+    const authedUser = props.authedUser;
+    return (
+        <div className="col-xs-offset-4 col-xs-4 add-questions">
 
-                <div className="input-group width-100">
-                    <form onSubmit={(e) => { this.handelAddNewQuestionOnSubmit(e, authedUser) }}>
-                        <label className="width-100">Would you rather...
+            <h3>Add question</h3>
+
+            <div className="input-group width-100">
+                <form onSubmit={(e) => { handelAddNewQuestionOnSubmit(e, authedUser) }}>
+                    <label className="width-100">Would you rather...
                         <input className="form-control" name="optionOne" type="text" />
-                        </label>
-                        <label className="width-100">
-                            or
+                    </label>
+                    <label className="width-100">
+                        or
                         <input className="form-control" name="optionTwo" type="text" />
-                        </label>
-                        <button type="submit" className="btn btn-primary">  Add</button>
-                    </form>
-                </div>
+                    </label>
+                    <button type="submit" className="btn btn-primary">  Add</button>
+                </form>
+            </div>
 
-            </div >
-        );
-    }
+        </div >
+    );
+
 }
 
 export default connect((state) => ({

@@ -32,7 +32,7 @@ export function handelAddNewQuestion(newQuestionObject) {
 
         let { users, authedUser, questions } = store.getState()
 
-        console.log(newQuestionObject)
+        // console.log(newQuestionObject)
         return _saveQuestion(newQuestionObject).then((formattedQuestion) => {
             questions = {
                 ...questions,
