@@ -39,25 +39,23 @@ class App extends Component {
       <div className="container text-center">
         <Header />
         <div className="row">
-          <Switch>
-            <Route exact path="/">
-              {authedUser ? <Questions /> : <Login />}
-            </Route>
-            {/* <Route path="/add">
+          <Route exact path="/">
+            {authedUser ? <Questions /> : <Login />}
+          </Route>
+          {/* <Route path="/add">
               <AddQuestions />
             </Route> */}
 
-            <PrivateRoute path="/add" component={AddQuestions} />
-            <PrivateRoute path="/leaderboard" component={Leaderboard} />
-            <PrivateRoute path="/question" component={AnswerQuestion} />
-            <PrivateRoute path="{/question/:id}" component={AnswerQuestion} />
+          <PrivateRoute path="/add" component={AddQuestions} />
+          <PrivateRoute path="/leaderboard" component={Leaderboard} />
+          <PrivateRoute path="/question" component={AnswerQuestion} />
+          <PrivateRoute path="/question/:id" component={AnswerQuestion} />
 
-            {/* 
+          {/* 
             <Route path="/leaderboard">
               <Leaderboard />
             </Route>
              */}
-          </Switch>
         </div>
       </div>
     );
