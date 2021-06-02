@@ -25,13 +25,17 @@ function Login(props) {
                     const user = e.target[0].value
 
                     dispatch(setAuthedUser(user))
-
+                    let referrer;
                     if (history) {
-                        if (history.location === undefined) {
-                            let referrer = history.state.state.referrer;
+                        if (history.location === undefined && history.state !== undefined) {
+                            referrer = history.state.state.referrer;
+                        } else if (history.location.state !== undefined) {
+
+                            referrer = history.location.state.referrer;
                         }
-                        let referrer = history.location.state.referrer;
-                        history.push(referrer)
+                        if (referrer !== undefined) {
+                            history.push(referrer)
+                        }
                     }
 
                 }}>
