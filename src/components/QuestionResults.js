@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import GenericNotFound from './GenericNotFound';
 
 function QuestionResults(props) {
     // let history = useHistory();
@@ -9,15 +10,19 @@ function QuestionResults(props) {
     // debugger
     // if(question === undefined){
     const theQuestion = question || questions[props.match.params.id]
+    if (theQuestion === undefined) {
+        return <GenericNotFound />;
 
+    }
     // }
     const theAuthor = users[theQuestion.author]
     const theAuthedUser = users[authedUser]
 
     const theAuthedUserAnswer = theAuthedUser.answers[theQuestion.id]
 
-    if (theQuestion === undefined || theAuthedUserAnswer === undefined) {
-        return "";
+    if (theAuthedUserAnswer === undefined) {
+        return <GenericNotFound />;
+
     }
 
     // console.log(props)

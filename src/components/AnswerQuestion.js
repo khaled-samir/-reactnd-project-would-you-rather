@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handelSaveQuestionAnswer, saveQuestionAnswerAction } from '../actions/questionsActions';
 import { _saveQuestionAnswer } from '../_DATA';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import GenericNotFound from './GenericNotFound';
 
 
 
@@ -13,7 +14,7 @@ function AnswerQuestion(props) {
     // console.log(props.match.params);
     const qustion = questions[props.match.params.id]
     if (qustion === undefined) {
-        return "";
+        return <GenericNotFound />;
     }
 
     const theAuthor = users[qustion.author]
