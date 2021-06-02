@@ -11,7 +11,14 @@ This app lets a user play the Would You Rather game!
 - A user can see the leaders of this game!. from this link
 [http://localhost:3000/leaderboard](http://localhost:3000/leaderboard) 
 - A user can see the results of the all questions.
-- Easy logging in    
+- Easy logging inز 
+# How to play
+- open [http://localhost:3000](http://localhost:3000).
+- Chose your user.
+- click on sign in button!.
+- Found the question and click on 'Answer Poll' button.
+- Answer the question by clicking on the poll options option 1 or option 2.
+- You will found your answer and the question's results.
 
 ## Available Scripts
 
