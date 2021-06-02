@@ -47,12 +47,14 @@ function QuestionResults(props) {
                 <h4>Would you rather</h4>
                 <h3>{theQuestion.optionOne.text}</h3>
                 <h4>{theQuestion.optionOne.votes.length} out of {theQuestion.optionOne.votes.length + theQuestion.optionTwo.votes.length} votes</h4>
+                <h4>{theQuestion.optionOne.votes.length / (theQuestion.optionOne.votes.length + theQuestion.optionTwo.votes.length) * 100} %</h4>
                 <span className='bg-primary text-warning'>{theAuthedUserAnswer === "optionOne" ? "You Voted for this option" : ''}</span>
 
                 <h4>or</h4>
 
                 <h3>{theQuestion.optionTwo.text}</h3>
                 <h4>{theQuestion.optionTwo.votes.length} out of {theQuestion.optionOne.votes.length + theQuestion.optionTwo.votes.length} votes</h4>
+                <h4>{theQuestion.optionTwo.votes.length / (theQuestion.optionOne.votes.length + theQuestion.optionTwo.votes.length) * 100} %</h4>
                 <span className='bg-primary text-warning'>{theAuthedUserAnswer === "optionTwo" ? "You Voted for this option" : ''}</span>
 
                 <hr />
