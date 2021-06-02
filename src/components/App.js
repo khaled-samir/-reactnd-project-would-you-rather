@@ -75,7 +75,7 @@ class App extends Component {
 
             <PrivateRoute path="/add" component={AddQuestions} />
             <PrivateRoute path="/leaderboard" component={Leaderboard} />
-            <PrivateRoute path="/resultsQuestions/:id" component={QuestionResults} />
+            {/* <PrivateRoute path="/resultsQuestions/:id" component={QuestionResults} /> */}
             <PrivateRoute path="/questions/:id" component={AnswerQuestion} />
             {/* <Redirect from='*' to='/404' /> */}
             {/* <Route component={GenericNotFound} /> */}

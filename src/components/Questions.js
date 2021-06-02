@@ -39,7 +39,7 @@ class Questions extends Component {
                                 })
 
                                 if (isNotAnswered) {
-                                    return <QustionItem key={question.id} question={question} />
+                                    return <QustionItem key={question.id} isNotAnswered={isNotAnswered} question={question} />
                                 }
                             })}
 
@@ -64,7 +64,7 @@ class Questions extends Component {
                             })
 
                             if (isAnswered) {
-                                return <QuestionResults key={question.id} question={question} />
+                                return <QustionItem key={question.id} isAnswered={isAnswered} question={question} />
                             }
                         })}
 

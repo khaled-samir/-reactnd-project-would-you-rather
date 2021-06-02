@@ -6,7 +6,7 @@ import GenericNotFound from './GenericNotFound';
 function QuestionResults(props) {
     // let history = useHistory();
 
-    const { questions, users, authedUser, question } = props
+    const { questions, users, authedUser, question, isAnswered } = props
     // debugger
     // if(question === undefined){
     const theQuestion = question || questions[props.match.params.id]
@@ -20,7 +20,7 @@ function QuestionResults(props) {
 
     const theAuthedUserAnswer = theAuthedUser.answers[theQuestion.id]
 
-    if (theAuthedUserAnswer === undefined) {
+    if (theAuthedUserAnswer === undefined && isAnswered === false) {
         return <GenericNotFound />;
 
     }

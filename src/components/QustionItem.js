@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class QustionItem extends Component {
     render() {
-        const { question, users } = this.props
+        const { question, users, isAnswered } = this.props
         const theAuthor = users[question.author]
 
         return (
@@ -19,7 +19,7 @@ class QustionItem extends Component {
                 <h4>Would you rather</h4>
                 <h4>{question.optionOne.text}... or</h4>
                 {/* <h4>write JavaScript ... or</h4> */}
-                <Link className="btn btn-primary" to={`/questions/${question.id}`}>Answer Poll</Link>
+                <Link className="btn btn-primary" to={`/questions/${question.id}`}>{isAnswered ? 'View Poll' : 'Answer Poll'}</Link>
                 {/* <button className="btn btn-primary">Answer Poll</button> */}
 
             </li>

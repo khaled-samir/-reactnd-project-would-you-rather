@@ -4,6 +4,7 @@ import { handelSaveQuestionAnswer, saveQuestionAnswerAction } from '../actions/q
 import { _saveQuestionAnswer } from '../_DATA';
 import { Link, useHistory } from 'react-router-dom';
 import GenericNotFound from './GenericNotFound';
+import QuestionResults from './QuestionResults';
 
 
 
@@ -20,6 +21,22 @@ function AnswerQuestion(props) {
     const theAuthor = users[qustion.author]
     const qustionId = qustion.id
     const qustionOptionOne = qustion.optionOne.text
+
+
+    let isAnswered = false;
+
+    Object.entries(users[authedUser].answers).map(([answersID, answers]) => {
+        if (answersID === qustionId) {
+            isAnswered = true
+        }
+    })
+
+
+    // debugger
+    if (isAnswered === true) {
+        return <QuestionResults key={qustionId} isAnswered={isAnswered} question={qustion} />;
+    }
+
     return (
         <div className="col-xs-offset-3 col-xs-6 text-center answer-questions">
             {/* <h3> {JSON.stringify(theAuthor)}</h3>
@@ -34,15 +51,21 @@ function AnswerQuestion(props) {
                 <h4>{theAuthor.name} asks:</h4>
                 <h4>Would you rather</h4>
                 <button className="btn btn-primary" onClick={() => {
+
                     const answerObject2 = { "authedUser": authedUser, "qid": qustionId, "answer": "optionOne" }
+
                     dispatch(handelSaveQuestionAnswer(answerObject2))
-                    history.push('/resultsQuestions/' + qustionId)
+
+                    // history.push('/questions/' + qustionId)
                 }}>{qustion.optionOne.text}</button>
                 <h4>or</h4>
                 <button className="btn btn-primary" onClick={() => {
+
                     const answerObject2 = { "authedUser": authedUser, "qid": qustionId, "answer": "optionTwo" }
+
                     dispatch(handelSaveQuestionAnswer(answerObject2))
-                    history.push('/resultsQuestions/' + qustionId)
+
+                    // history.push('/questions/' + qustionId)
                 }}>{qustion.optionTwo.text}</button>
 
             </div>
